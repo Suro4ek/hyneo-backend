@@ -1,0 +1,6 @@
+mysql:
+  host: 91.236.136.168
+  port: 3306
+  user: u717642_site
+  pass: pV9zO0lS8qaT5t
+  db: u717642_site

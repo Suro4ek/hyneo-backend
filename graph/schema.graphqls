@@ -1,0 +1,72 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+
+type Item {
+  id: Int!
+  name: String!
+  price: Int!
+  desc: String!
+  img: String
+  discprice: Int!
+}
+
+type Category {
+  id: Int!
+  name: String!
+  items: [Item]!
+}
+
+type PromoCode {
+  discount: Int!
+}
+
+type Minecraft {
+  onlinePlayers: Int!
+}
+
+type Cart {
+  id: ID!
+  items: [Item!]!
+  count: Int!
+}
+
+type Buy {
+  promo: String
+  nickname: String!
+  pay: Int!
+  Cart: [Cart!]!
+}
+
+type Query {
+  items: [Item!]!
+  category: [Category!]!
+  minecraft: Minecraft!
+}
+
+input ItemInput {
+  id: ID!
+  name: String!
+  price: Int!
+  desc: String!
+  discprice: Int!
+}
+
+input CartInput {
+  id: ID!
+  item: [ItemInput]!
+  count: Int!
+}
+
+input BuyInput {
+  promo: String!
+  nickname: String!
+  pay: Int!
+  Cart: [CartInput!]!
+}
+
+type Mutation {
+  checkPromo(name: String!): PromoCode
+  buy(buy: BuyInput!): String!
+}
